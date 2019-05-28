@@ -33,6 +33,15 @@ app.get('/catagories-post', function(req,res){
    res.render('catagories-post.ejs')
 })
 
+app.get('/single-post', function(req, res){
+   res.render('single-post.ejs')
+})
+
+
+app.get('/contact', function(req, res){
+   res.render('contact.ejs')
+})
+
 /* indlæs alle de routes serveren skal håndtere
  * dette sker igennem en ny fil, for at splitte koden op i smartere blokke */
 require('./server/routes/routes.js')(app);
