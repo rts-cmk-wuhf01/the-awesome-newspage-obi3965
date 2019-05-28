@@ -21,7 +21,17 @@ app.set('view engine', 'ejs');
 // peg på den mappe hvor alle views filerne er placeret
 app.set('views', './server/views');
 
+app.get('/home', function(req, res){
+   res.render('home.ejs')
+})
 
+app.get('/about', function(req,res){
+   res.render('about.ejs')
+})
+
+app.get('/catagories-post', function(req,res){
+   res.render('catagories-post.ejs')
+})
 
 /* indlæs alle de routes serveren skal håndtere
  * dette sker igennem en ny fil, for at splitte koden op i smartere blokke */
@@ -34,7 +44,7 @@ app.use(express.static('public'));
 
 
 // start serveren på port 3000 
-const port = 3000;
+const port = 3001;
 app.listen(port, (error) => {
    if (error) console.log(error);
    console.log('\x1b[35m%s\x1b[0m', '================================================================'); // udskriver en lilla streg i konsol
