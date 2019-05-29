@@ -22,24 +22,36 @@ app.set('view engine', 'ejs');
 app.set('views', './server/views');
 
 app.get('/home', function(req, res){
-   res.render('home.ejs')
+   res.render('home.ejs',{
+      "home":"The News Paper - News &amp; Lifestyle Magazine Template"
+   })
 })
 
 app.get('/about', function(req,res){
-   res.render('about.ejs')
+   res.render('about.ejs',{
+      "about":"The News Paper - News &amp; Lifestyle Magazine Template"
+   })
 })
 
 app.get('/catagories-post', function(req,res){
-   res.render('catagories-post.ejs')
+   res.render('catagories-post.ejs',{
+      "catagories": "The News Paper - News &amp; Lifestyle Magazine Template"
+      
+   })
 })
 
 app.get('/single-post', function(req, res){
-   res.render('single-post.ejs')
+   res.render('single-post.ejs',{
+      "single":"The News Paper - News &amp; Lifestyle Magazine Template"
+      
+   })
 })
 
 
 app.get('/contact', function(req, res){
-   res.render('contact.ejs')
+   res.render('contact.ejs',{
+      "contacts": "The News Paper - News &amp; Lifestyle Magazine Template"
+   })
 })
 
 /* indlæs alle de routes serveren skal håndtere

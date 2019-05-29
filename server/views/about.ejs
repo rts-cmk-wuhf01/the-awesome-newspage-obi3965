@@ -4,27 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-      <!-- Favicon -->
-      <link rel="icon" href="img/core-img/favicon.ico">
-
-      <!-- Core Stylesheet -->
-      <link rel="stylesheet" href="style.css">
+    <title><%= about %></title>
+      <%- include('partials/styles.ejs') %>
+      <%- include('partials/favicon.ejs') %>
 </head>
 <body>
      <!-- ##### Header Area Start ##### -->
     <header class="header-area">
-
             <%- include("partials/header.ejs") %>
             <%- include("partials/nav.ejs") %>
-               
             </header>
-            <%- include("partials/news.ejs") %>
+        
 
-            <!-- ##### Header Area End ##### -->
+            <div class="hero-area">
+                    <%- include("partials/news.ejs") %>
+                  </div>
+                     
 
           
-            <!-- ##### About Area Start ##### -->
+    <!-- ##### About Area Start ##### -->
     <section class="about-area">
         <div class="container">
 
