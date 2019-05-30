@@ -44,7 +44,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #152535;
+  color: #152535 !important;
   line-height: 1.3;
   font-weight: 700; }
 
@@ -59,7 +59,7 @@ a:hover,
 a:focus {
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms;
-  text-decoration: none;
+  text-decoration: none !important;
   outline: 0 solid transparent;
   color: #1c1c1c;
   font-weight: 500;

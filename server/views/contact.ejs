@@ -13,10 +13,31 @@
 <body>
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
-        <%- include("partials/header.ejs") %>
-        <%- include("partials/nav.ejs") %>
-    </header>
-    <!-- ##### Header Area End ##### -->
+            <div class="top-header-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                                <div class="top-header-content d-flex align-items-center justify-content-between">
+                             <%- include("partials/header.ejs") %>
+                              
+                             <div class="login-search-area d-flex align-items-center">
+                                    <div class="login d-flex">
+                                            <%- include("partials/login.ejs") %>
+                                            <%- include("partials/register.ejs") %>
+                                    </div>
+    
+                                    <div class="search-form">
+                                            <%- include("partials/search.ejs") %>
+                                    </div>
+                             </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+           
+            <%- include("partials/nav.ejs") %>
+        </header>
 
 
 
