@@ -1,5 +1,10 @@
 // indlæs express modulet, dette er vores serverprogram
 const express = require('express');
+const date = require('date-and-time');
+
+let now = new Date(); 
+date.format(now, 'h:mm A | MMMM DD');
+
 // opret en express applikation 
 const app = express();
 
@@ -21,28 +26,40 @@ app.set('view engine', 'ejs');
 // peg på den mappe hvor alle views filerne er placeret
 app.set('views', './server/views');
 
+app.locals.dateAndTime = require('date-and-time');
+
 app.get('/home', function(req, res){
+
+   // let commentList = [
+   //    {   
+   //       name:"finance",
+   //       text: "Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+   //       date: "7:00 AM | April 14"
+
+   //        },
+   // ]
    res.render('home.ejs',{
-      "home":"The News Paper - News &amp; Lifestyle Magazine Template"
+      
+      "title":"The News Paper - News &amp; Lifestyle Magazine Template"
    })
 })
 
 app.get('/about', function(req,res){
    res.render('about.ejs',{
-      "about":"The News Paper - News &amp; Lifestyle Magazine Template"
+      "title":"The News Paper - News &amp; Lifestyle Magazine Template"
    })
 })
 
 app.get('/catagories-post', function(req,res){
    res.render('catagories-post.ejs',{
-      "catagories": "The News Paper - News &amp; Lifestyle Magazine Template"
+      "title":"The News Paper - News &amp; Lifestyle Magazine Template"
       
    })
 })
 
 app.get('/single-post', function(req, res){
    res.render('single-post.ejs',{
-      "single":"The News Paper - News &amp; Lifestyle Magazine Template"
+      "title":"The News Paper - News &amp; Lifestyle Magazine Template"
       
    })
 })
@@ -50,7 +67,7 @@ app.get('/single-post', function(req, res){
 
 app.get('/contact', function(req, res){
    res.render('contact.ejs',{
-      "contacts": "The News Paper - News &amp; Lifestyle Magazine Template"
+      "title":"The News Paper - News &amp; Lifestyle Magazine Template"
    })
 })
 
