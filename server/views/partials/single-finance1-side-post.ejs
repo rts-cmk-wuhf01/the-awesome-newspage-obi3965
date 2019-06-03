@@ -3,12 +3,18 @@
             <a href="#"><img src="img/bg-img/19.jpg" alt=""></a>
         </div>
         <div class="post-data">
+            <%
+            let unformatted = new Date("2020-04-14, 07:00"); // TODO: Replace argument with: comment.date
+            let time = dateAndTime.format(unformatted, 'h:mm A');
+            let date = dateAndTime.format(unformatted, 'MMMM D');
+            %>
             <a href="#" class="post-catagory">Finance</a>
             <div class="post-meta">
                 <a href="#" class="post-title">
                     <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
                 </a>
-                <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
+                <p class="post-date"><span><%= time %></span> | <span><%= date %></span></p>
             </div>
         </div>
+
     </div>

@@ -1,14 +1,19 @@
 // indlæs express modulet, dette er vores serverprogram
 const express = require('express');
-const date = require('date-and-time');
 
-let now = new Date(); 
-date.format(now, 'h:mm A | MMMM DD');
 
 // opret en express applikation 
 const app = express();
 
 
+// const date = require('date-and-time'); // Gammel (slettes om lidt)
+
+app.locals.dateAndTime = require('date-and-time');
+
+
+// let now = new Date(); 
+// let formattedDate = app.locals.dateAndTime.format(now, 'D/M/YYYY');
+// console.log("Obis dato:", formattedDate )
 
 /* aktiver serverside console.log af side indlæsninger. 
  * Dette sættes op så vi kan følge med i hvilke HTML filer 
