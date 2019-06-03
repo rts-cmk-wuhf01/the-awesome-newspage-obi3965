@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <%- include('partials/styles.ejs') %>
+    <%- include('partials/favicon.ejs') %>
+</head>
+
+<body>
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+            <div class="top-header-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                                <div class="top-header-content d-flex align-items-center justify-content-between">
+                             <%- include("partials/header.ejs") %>
+                              
+                             <div class="login-search-area d-flex align-items-center">
+                                    <div class="login d-flex">
+                                            <%- include("partials/login.ejs") %>
+                                            <%- include("partials/register.ejs") %>
+                                    </div>
+    
+                                    <div class="search-form">
+                                            <%- include("partials/search.ejs") %>
+                                    </div>
+                             </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+           
+            <%- include("partials/nav.ejs") %>
+        </header>
+
+
+
+    <div class="hero-area">
+        <%- include("partials/news.ejs") %>
+    </div>
+
+
+
+    <!-- ##### Contact Form Area Start ##### -->
+    <div class="contact-area section-padding-0-80">
+        <%- include('partials/contact.ejs') %>
+    </div>
+    <!-- ##### Contact Form Area End ##### -->
+
+
+
+
+
+
+
+
+    <!-- Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
+    <script src="js/google-map/map-active.js"></script>
+    <%- include("partials/footer.ejs")%>
+    <%- include("partials/js.ejs")%>
+</body>
+
+</html>
