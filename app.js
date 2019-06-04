@@ -6,18 +6,6 @@ const express = require('express');
 const app = express();
 
 
-// const date = require('date-and-time'); // Gammel (slettes om lidt)
-
-app.locals.dateAndTime = require('date-and-time');
-
-
-// let now = new Date(); 
-// let formattedDate = app.locals.dateAndTime.format(now, 'D/M/YYYY');
-// console.log("Obis dato:", formattedDate )
-
-/* aktiver serverside console.log af side indlæsninger. 
- * Dette sættes op så vi kan følge med i hvilke HTML filer 
- * og ROUTES der forsøges at blive indlæst */
 const logger = require('morgan');
 app.use(logger('dev', {
    // hvis ALLE requests skal ses i loggen, udkommenter næste linje
@@ -31,22 +19,16 @@ app.set('view engine', 'ejs');
 // peg på den mappe hvor alle views filerne er placeret
 app.set('views', './server/views');
 
-app.locals.dateAndTime = require('date-and-time');
+// app.locals.dateAndTime = require('date-and-time');
 
 app.get('/home', function(req, res){
-
-   // let commentList = [
-   //    {   
-   //       name:"finance",
-   //       text: "Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-   //       date: "7:00 AM | April 14"
-
-   //        },
-   // ]
    res.render('home.ejs',{
-      
+     
       "title":"The News Paper - News &amp; Lifestyle Magazine Template"
-   })
+   }) 
+
+   
+   
 })
 
 app.get('/about', function(req,res){
