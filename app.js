@@ -19,44 +19,9 @@ app.set('view engine', 'ejs');
 // peg på den mappe hvor alle views filerne er placeret
 app.set('views', './server/views');
 
-// app.locals.dateAndTime = require('date-and-time');
-
-app.get('/home', function(req, res){
-   res.render('home.ejs',{
-     
-      "title":"The News Paper - News &amp; Lifestyle Magazine Template"
-   }) 
-
-   
-   
-})
-
-app.get('/about', function(req,res){
-   res.render('about.ejs',{
-      "title":"The News Paper - News &amp; Lifestyle Magazine Template"
-   })
-})
-
-app.get('/catagories-post', function(req,res){
-   res.render('catagories-post.ejs',{
-      "title":"The News Paper - News &amp; Lifestyle Magazine Template"
-      
-   })
-})
-
-app.get('/single-post', function(req, res){
-   res.render('single-post.ejs',{
-      "title":"The News Paper - News &amp; Lifestyle Magazine Template"
-      
-   })
-})
+app.locals.dateAndTime = require('date-and-time');
 
 
-app.get('/contact', function(req, res){
-   res.render('contact.ejs',{
-      "title":"The News Paper - News &amp; Lifestyle Magazine Template"
-   })
-})
 
 /* indlæs alle de routes serveren skal håndtere
  * dette sker igennem en ny fil, for at splitte koden op i smartere blokke */
