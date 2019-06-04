@@ -1,0 +1,4 @@
+<P><%
+            let now = new Date(); 
+            let formattedDate = date.format(now, 'D/M/YYYY');
+            %></P>
