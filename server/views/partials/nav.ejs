@@ -65,8 +65,7 @@
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Catagories</li>
                                         <li><a href="/">Home</a></li>
-                                        <!-- <% if(typeof categories != 'undefined'){%>
-                                        <% catagories.forEach(category =>{ %>  -->
+                                        
                                         <li><a href="/catagories-post">Catagories</a></li>
                                         
                                         <li><a href="/single-post">Single Articles</a></li>
@@ -128,3 +127,13 @@
         </div>
     </div>
 </div>
+
+
+<% if(typeof categories != 'undefined'){%>
+    <% categories.forEach(category =>{%>
+        <li>
+          <%= category.category_title %>  
+        </li>
+        
+    <%  }); %>
+<% } %>

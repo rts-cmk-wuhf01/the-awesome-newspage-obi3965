@@ -41,30 +41,30 @@ module.exports = (app) => {
    app.get('/catagories-post', function(req,res, next){
       
        
-   //    let commentsList = [{
-   //       name: "JAMES SMITH",
-   //       text:"Facebook is offering facial recognition..",
-   //       image:"img/bg-img/29.jpg",
-   //       date: "06:34 am, April 14, 2018"
-   //    },
-   //    {
-   //       name: "ANNA HANSEN",
-   //       text:"Facebook is offering facial recognition..",
-   //       image:"img/bg-img/30.jpg",
-   //       date: "06:34 am, April 15, 2018"
-   //    },
+      let commentsList = [{
+         name: "JAMES SMITH",
+         text:"Facebook is offering facial recognition..",
+         image:"img/bg-img/29.jpg",
+         date: "06:34 am, April 14, 2018"
+      },
+      {
+         name: "ANNA HANSEN",
+         text:"Facebook is offering facial recognition..",
+         image:"img/bg-img/30.jpg",
+         date: "06:34 am, April 15, 2018"
+      },
       
-   //    {
-   //       name: "CHRISTINA PRIOR",
-   //       text:"Facebook is offering facial recognition..",
-   //       image:"img/bg-img/31.jpg",
-   //       date: "06:34 am, April 15, 2018"
-   //    }
-   // ]
+      {
+         name: "CHRISTINA PRIOR",
+         text:"Facebook is offering facial recognition..",
+         image:"img/bg-img/31.jpg",
+         date: "06:34 am, April 15, 2018"
+      }
+   ]
       res.render('catagories-post.ejs',{
          "title":"The News Paper - News &amp; Lifestyle Magazine Template",
          
-         // "latestCommentsList": commentsList
+         "latestCommentsList": commentsList
       })
 
       
@@ -72,9 +72,17 @@ module.exports = (app) => {
 
   
    
-   app.get('/single-post', function(req, res, next){
+   app.get('/single-post', async function(req, res, next){
+      // DB: hent alle kategorier
+      let db = await mysql.connect();
+      let [categories] = await db.execute('SELECT * FROM categories');
+      db.end();
+      console.log(categories)
+
       res.render('single-post.ejs',{
-         "title":"The News Paper - News &amp; Lifestyle Magazine Template"
+         "title":"The News Paper - News &amp; Lifestyle Magazine Template",
+         "test": 10,
+         "categories":categories
       })
    })
    
