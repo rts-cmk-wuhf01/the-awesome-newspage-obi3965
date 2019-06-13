@@ -30,14 +30,14 @@
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="/">Home</a></li>
-                                    <li><a href="/categories-post">categories</a></li>
+                                    <li><a href="/categories">categories</a></li>
                                     <li><a href="/single-post">Single Articles</a></li>
                                     <li><a href="/about">About Us</a></li>
                                     <li><a href="/contact">Contact</a></li>
                                     <li><a href="#">Dropdown</a>
                                         <ul class="dropdown">
                                             <li><a href="/">Home</a></li>
-                                            <li><a href="/categories-post">categories</a></li>
+                                            <li><a href="/categories">categories</a></li>
                                             <li><a href="/single-post">Single Articles</a></li>
                                             <li><a href="/about">About Us</a></li>
                                             <li><a href="/contact">Contact</a></li>
@@ -50,7 +50,7 @@
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">categories</li>
                                         <li><a href="/">Home</a></li>
-                                        <li><a href="/categories-post">categories</a></li>
+                                        <li><a href="/categories">categories</a></li>
                                         <li><a href="/single-post">Single Articles</a></li>
                                         <li><a href="/about">About Us</a></li>
                                         <li><a href="/contact">Contact</a></li>
@@ -58,7 +58,7 @@
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">categories</li>
                                         <li><a href="/">Home</a></li>
-                                        <li><a href="/categories-post">categories</a></li>
+                                        <li><a href="/categories">categories</a></li>
                                         <li><a href="/single-post">Single Articles</a></li>
                                         <li><a href="/about">About Us</a></li>
                                         <li><a href="/contact">Contact</a></li>
@@ -67,7 +67,7 @@
                                         <li class="title">categories</li>
                                         <li><a href="/">Home</a></li>
                                         
-                                        <li><a href="/categories-post">categories</a></li>
+                                        <li><a href="/categories">categories</a></li>
                                         
                                         <li><a href="/single-post">Single Articles</a></li>
                                         <li><a href="/about">About Us</a></li>
@@ -114,7 +114,7 @@
                             </li>
                             <% if(typeof categories != 'undefined'){%>
                                 <% categories.forEach(category =>{%>
-                                    <li><a href="/categories-post/<%= category.category_id %>"><%= category.category_title %></a></li>
+                                    <li><a href="/categories/<%= category.category_id %>"><%= category.category_title %></a></li>
                                 <%  }); %>
                             <% } %>
                             

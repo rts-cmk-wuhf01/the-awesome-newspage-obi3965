@@ -2,18 +2,21 @@ const mysql = require('../config/mysql'); // mysql
 
 module.exports = (app) => {
 
+   // Test
    app.get('/database', async(req,res,next)=>{
       let db = await mysql.connect();
       let [newspage] = await db.execute('SELECT * FROM articles');
       db.end();
       // res.send(products)
       // inde i routen
-      res('newspage', {
+      res.render('newspage', {
        'newspage': newspage
 });
    })     
    
-   
+   // Hvad skal der ske på denne side?
+   // (...)
+
    app.get('/', async function(req, res, next){
 
       // featurePostArea = [{
@@ -35,6 +38,9 @@ module.exports = (app) => {
       
       
    })
+
+   // Hvad skal der ske på denne side?
+   // (...)
    
    app.get('/about', async function(req,res, next){
       let db = await mysql.connect();
@@ -45,8 +51,16 @@ module.exports = (app) => {
          "categories":categories
       })
    })
+
+
    
-   app.get('/catagories-post',async function(req,res, next){
+   
+   // Hvad skal der ske på denne side?
+   // (...)
+
+   // Overvej om jeg skal omdøbe denne route til: "articlesByCategory"
+
+   app.get('/categories',async function(req,res, next){
       let db = await mysql.connect();
       let [categories] = await db.execute('SELECT * FROM categories');
       db.end();
@@ -71,7 +85,7 @@ module.exports = (app) => {
          date: "06:34 am, April 15, 2018"
       }
    ]
-      res.render('catagories-post.ejs',{
+      res.render('categories.ejs',{
          "title":"The News Paper - News &amp; Lifestyle Magazine Template",
          "categories":categories,
          "latestCommentsList": commentsList
@@ -80,10 +94,27 @@ module.exports = (app) => {
       
    })
 
-   app.get('/categories-post/:category_id',async function(req,res, next){
+   app.get('/categories/:category_id',async function(req,res, next){
       
       let db = await mysql.connect();
+
+      // Til Navigation
       let [categories] = await db.execute('SELECT * FROM categories');
+
+      console.log(req.params.category_id);
+
+
+      // Artikler der tilhører den valgte kategori
+      let [articlesByCategory] = await db.execute(`
+         SELECT
+            *
+         FROM articles
+         WHERE fk_category_id = ?
+         `,
+         [req.params.category_id]
+      );
+       
+      
       db.end();
       let commentsList = [{
          name: "JAMES SMITH",
@@ -105,10 +136,12 @@ module.exports = (app) => {
          date: "06:34 am, April 15, 2018"
       }
    ]
-      res.render('catagories-post.ejs',{
+      res.render('categories.ejs',{
          "title":"The News Paper - News &amp; Lifestyle Magazine Template",
-         "categories":categories,
-         "latestCommentsList": commentsList
+         "categories":categories,  // Nav
+         "articlesByCategory": articlesByCategory
+         
+         // "latestCommentsList": commentsList
       })
 
       
