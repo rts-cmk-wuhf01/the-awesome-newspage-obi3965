@@ -139,9 +139,9 @@ module.exports = (app) => {
       res.render('categories.ejs',{
          "title":"The News Paper - News &amp; Lifestyle Magazine Template",
          "categories":categories,  // Nav
-         "articlesByCategory": articlesByCategory
+         "articlesByCategory": articlesByCategory,
          
-         // "latestCommentsList": commentsList
+         "latestCommentsList": commentsList
       })
 
       
