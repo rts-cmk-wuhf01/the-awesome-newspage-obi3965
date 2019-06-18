@@ -191,32 +191,32 @@ module.exports = (app) => {
       let message = req.body.message;
       let contactDate = new Date();
 
+      let errorMessages = {};
+
       //here we should create an empty array to handle our all input messages
       let return_message = [];
       //for validation, it will push our all values into our empty array
       if (name == 'undefined' || name == '') {
-         return_message.push('Please Enter Your Name')
+         errorMessages.nameError = "Please Enter Your Name";
       }
       if (email == 'undefined' || email == '') {
-         return_message.push('Please Enter Your Email');
+         errorMessages.emailError = "Please Enter Your Email";
       }
       if (subject == 'undefined' || subject == '') {
-         return_message.push('Please Enter Your Subject');
+         errorMessages.subjectError = "Please Enter Your Subject";
       }
       if (message == 'undefined' || message == '') {
-         return_message.push('Please Enter Your Message')
+         errorMessages.messageError = "Please Enter Your Message";
       }
-      if (return_message.length > 0) {
+      if (Object.keys(errorMessages).length > 0) {
          // Der har været en fejl i formular-input
 
          let categories = await getCategories(); // denne forklares lige om lidt!
-         console.log("Render in: if (return_message.length > 0)");
-         console.log(return_message);
-        
+
          res.render('contact', {
             "title": "The News Paper - News &amp; Lifestyle Magazine Template",
             'categories': categories,
-            'return_message': return_message,
+            'errorMessages': errorMessages,    // Object
             'values': req.body // læg mærke til vi "bare" sender req.body tilbage
          });
 

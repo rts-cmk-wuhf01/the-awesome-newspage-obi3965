@@ -6,55 +6,78 @@
                 </div>
             </div>
         </div>
-        <div>Version 1</div>
-        <% if( typeof return_message != 'undefined'){ %>
-            <h4><ul><% return_message.forEach (current_return_message => { %>
-                <li><%= current_return_message %></li>
-            <% }) %></h4></ul>
-         <% } %>
-
-        <hr>
-
-        <div>Version 2</div>
-        <% if( typeof return_message != 'undefined'){ %>
-            <h4>
-                <%= return_message.join(", ") %>
-            </h4>
-         <% } %>
-
-
+        
 
         <div class="row">
             <div class="col-12 col-lg-8">
                 
+                <% if (typeof errorMessages != "undefined") { %>
+                    
+                    <script>
+                        let errorMessages = `<%- JSON.stringify (errorMessages) %>`;
+                        errorMessages = JSON.parse (errorMessages);
+
+                        document.addEventListener ("DOMContentLoaded", (event) => {
+                            let formElement = document.querySelector("#contact-form");
+                            
+
+                            if (errorMessages.nameError != undefined) {
+                                let inputElement = formElement.name;
+                                let errorElement = inputElement.parentElement.querySelector(".error-message");
+                                errorElement.innerHTML = errorMessages.nameError;
+                            }
+
+                            if (errorMessages.emailError != undefined) {
+                                let inputElement = formElement.email;
+                                let errorElement = inputElement.parentElement.querySelector(".error-message");
+                                errorElement.innerHTML = errorMessages.emailError;
+                            }
+                            if (errorMessages.subjectError != undefined) {
+                                let inputElement = formElement.subject;
+                                let errorElement = inputElement.parentElement.querySelector(".error-message");
+                                errorElement.innerHTML = errorMessages.subjectError;
+                            }
+
+                            if (errorMessages.messageError != undefined) {
+                                let inputElement = formElement.message;
+                                let errorElement = inputElement.parentElement.querySelector(".error-message");
+                                errorElement.innerHTML = errorMessages.messageError;
+                            }
+                            
+                            
+                        });
+                    </script>
+
+                <% } %>
 
                     <% if (typeof values == "undefined" || values.name == undefined) {
                         values = { name: "Dummy Name", email: "dummy@mail.com", subject: "Dummy Subject", message: "Dummy Message"};
                     }
                     %>
                 <div class="contact-form-area">
-                    <form method="post">
+                    <form method="post" id="contact-form">
 
                         <div class="row">
                             <div class="col-12 col-lg-6">
                                 <input type="text" class="form-control" id="name" placeholder="Name" name="name"
                                value="<%= typeof values != 'undefined' ? values.name : '' %>">
-                                
+                                <span class="error-message"></span>
                             </div>
                             <div class="col-12 col-lg-6">
                                 <input type="email" class="form-control" id="email" placeholder="E-mail" name="email"
                                value="<%= typeof values != 'undefined' ? values.email : '' %>">
+                               <span class="error-message"></span>
                             </div>
                             <div class="col-12">
                                 <input type="text" class="form-control" id="subject" placeholder="Subject" name="subject"
                                value="<%= typeof values != 'undefined' ? values.subject : '' %>">
-                                
+                               <span class="error-message"></span>
                             </div>
                             <div class="col-12">
-                                <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message">
-                               <%= typeof values != 'undefined' ? values.message : '' %>
-                                </textarea>
-                              
+                                <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"><%=
+                                typeof values != 'undefined' ? values.message : '' 
+                                %></textarea>
+                                <span class="error-message"></span>
                             </div>
                             <div class="col-12 text-center">
                                 <button class="btn newspaper-btn mt-30 w-100" type="submit">Send Message</button>
