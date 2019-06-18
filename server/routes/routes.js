@@ -216,7 +216,8 @@ module.exports = (app) => {
          res.render('contact', {
             "title": "The News Paper - News &amp; Lifestyle Magazine Template",
             'categories': categories,
-            'errorMessages': errorMessages,    // Object
+            'errorMessages': errorMessages,  
+            ' return_message': return_message,  // Object
             'values': req.body // læg mærke til vi "bare" sender req.body tilbage
          });
 
@@ -251,8 +252,9 @@ module.exports = (app) => {
          res.render('contact', {
             "title": "The News Paper - News &amp; Lifestyle Magazine Template",
             'categories': categories,
-            'return_message': return_message.join(', '),
-            //  'values': []
+            'errorMessages': errorMessages,
+           ' return_message': return_message,
+             'values': []
          });
       }
 

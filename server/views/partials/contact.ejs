@@ -6,7 +6,9 @@
                 </div>
             </div>
         </div>
-        
+        <% if( typeof return_message != 'undefined'){ %>
+            <h4><%= return_message %></h4>
+         <% } %>
 
         <div class="row">
             <div class="col-12 col-lg-8">
@@ -18,7 +20,7 @@
                             <div class="col-12 col-lg-6">
                                 <input type="text" class="form-control" id="name" placeholder="Name" name="name"
                                value="<%= typeof values != 'undefined' ? values.name : '' %>">
-                                <span class="error-message"><%= typeof errorMessages != "undefined" && typeof errorMessages.nameError != "undefined" ? errorMessages.nameError : "" %></span>
+                                <span class="error-message"><%= typeof errorMessages != "undefined" && typeof errorMessages.nameError != "undefined" ? errorMessages.nameError %></span>
                             </div>
                             <div class="col-12 col-lg-6">
                                 <input type="email" class="form-control" id="email" placeholder="E-mail" name="email"
