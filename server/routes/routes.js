@@ -191,33 +191,32 @@ module.exports = (app) => {
       let message = req.body.message;
       let contactDate = new Date();
 
-      let errorMessages = {};
+      
 
       //here we should create an empty array to handle our all input messages
       let return_message = [];
       //for validation, it will push our all values into our empty array
       if (name == 'undefined' || name == '') {
-         errorMessages.nameError = "Please Enter Your Name";
+         return_message.push("Please Enter Your Name");
       }
       if (email == 'undefined' || email == '') {
-         errorMessages.emailError = "Please Enter Your Email";
+         return_message.push("Please Enter Your Email");
       }
       if (subject == 'undefined' || subject == '') {
-         errorMessages.subjectError = "Please Enter Your Subject";
+         return_message.push( "Please Enter Your Subject");
       }
       if (message == 'undefined' || message == '') {
-         errorMessages.messageError = "Please Enter Your Message";
+         return_message.push("Please Enter Your Message");
       }
-      if (Object.keys(errorMessages).length > 0) {
+      if (return_message.length > 0) {
          // Der har været en fejl i formular-input
 
          let categories = await getCategories(); // denne forklares lige om lidt!
 
          res.render('contact', {
             "title": "The News Paper - News &amp; Lifestyle Magazine Template",
-            'categories': categories,
-            'errorMessages': errorMessages,  
-            ' return_message': return_message,  // Object
+            'categories': categories, 
+            'return_message': return_message.join(', ' ),
             'values': req.body // læg mærke til vi "bare" sender req.body tilbage
          });
 
@@ -237,7 +236,7 @@ module.exports = (app) => {
             // res.send(req.body);
             // affected rows er større end nul, hvis en (eller flere) række(r) blev indsat
             if (result[0].affectedRows > 0) {
-               return_message.push('Tak for din besked, vi vender tilbage hurtigst muligt');
+               return_message.push('thanks for sending your emails, we will get back to you as soon as possible');
             } else {
                return_message.push('Din besked blev ikke modtaget.... ');
             }
@@ -252,8 +251,7 @@ module.exports = (app) => {
          res.render('contact', {
             "title": "The News Paper - News &amp; Lifestyle Magazine Template",
             'categories': categories,
-            'errorMessages': errorMessages,
-           ' return_message': return_message,
+            'return_message': return_message.join(', '),
              'values': []
          });
       }

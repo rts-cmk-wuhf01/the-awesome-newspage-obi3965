@@ -20,23 +20,23 @@
                             <div class="col-12 col-lg-6">
                                 <input type="text" class="form-control" id="name" placeholder="Name" name="name"
                                value="<%= typeof values != 'undefined' ? values.name : '' %>">
-                                <span class="error-message"><%= typeof errorMessages != "undefined" && typeof errorMessages.nameError != "undefined" ? errorMessages.nameError %></span>
+                               
                             </div>
                             <div class="col-12 col-lg-6">
                                 <input type="email" class="form-control" id="email" placeholder="E-mail" name="email"
                                value="<%= typeof values != 'undefined' ? values.email : '' %>">
-                               <span class="error-message"></span>
+                               
                             </div>
                             <div class="col-12">
                                 <input type="text" class="form-control" id="subject" placeholder="Subject" name="subject"
                                value="<%= typeof values != 'undefined' ? values.subject : '' %>">
-                               <span class="error-message"></span>
+                               
                             </div>
                             <div class="col-12">
                                 <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"><%=
                                 typeof values != 'undefined' ? values.message : '' 
                                 %></textarea>
-                                <span class="error-message"></span>
+                                
                             </div>
                             <div class="col-12 text-center">
                                 <button class="btn newspaper-btn mt-30 w-100" type="submit">Send Message</button>
