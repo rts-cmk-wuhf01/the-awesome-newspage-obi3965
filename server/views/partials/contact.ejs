@@ -10,50 +10,7 @@
 
         <div class="row">
             <div class="col-12 col-lg-8">
-                
-                <% if (typeof errorMessages != "undefined") { %>
-                    
-                    <script>
-                        let errorMessages = `<%- JSON.stringify (errorMessages) %>`;
-                        errorMessages = JSON.parse (errorMessages);
 
-                        document.addEventListener ("DOMContentLoaded", (event) => {
-                            let formElement = document.querySelector("#contact-form");
-                            
-
-                            if (errorMessages.nameError != undefined) {
-                                let inputElement = formElement.name;
-                                let errorElement = inputElement.parentElement.querySelector(".error-message");
-                                errorElement.innerHTML = errorMessages.nameError;
-                            }
-
-                            if (errorMessages.emailError != undefined) {
-                                let inputElement = formElement.email;
-                                let errorElement = inputElement.parentElement.querySelector(".error-message");
-                                errorElement.innerHTML = errorMessages.emailError;
-                            }
-                            if (errorMessages.subjectError != undefined) {
-                                let inputElement = formElement.subject;
-                                let errorElement = inputElement.parentElement.querySelector(".error-message");
-                                errorElement.innerHTML = errorMessages.subjectError;
-                            }
-
-                            if (errorMessages.messageError != undefined) {
-                                let inputElement = formElement.message;
-                                let errorElement = inputElement.parentElement.querySelector(".error-message");
-                                errorElement.innerHTML = errorMessages.messageError;
-                            }
-                            
-                            
-                        });
-                    </script>
-
-                <% } %>
-
-                    <% if (typeof values == "undefined" || values.name == undefined) {
-                        values = { name: "Dummy Name", email: "dummy@mail.com", subject: "Dummy Subject", message: "Dummy Message"};
-                    }
-                    %>
                 <div class="contact-form-area">
                     <form method="post" id="contact-form">
 
@@ -61,7 +18,7 @@
                             <div class="col-12 col-lg-6">
                                 <input type="text" class="form-control" id="name" placeholder="Name" name="name"
                                value="<%= typeof values != 'undefined' ? values.name : '' %>">
-                                <span class="error-message"></span>
+                                <span class="error-message"><%= typeof errorMessages != "undefined" && typeof errorMessages.nameError != "undefined" ? errorMessages.nameError : "" %></span>
                             </div>
                             <div class="col-12 col-lg-6">
                                 <input type="email" class="form-control" id="email" placeholder="E-mail" name="email"
