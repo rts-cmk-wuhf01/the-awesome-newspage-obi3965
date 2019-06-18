@@ -211,12 +211,12 @@ module.exports = (app) => {
 
          let categories = await getCategories(); // denne forklares lige om lidt!
          console.log("Render in: if (return_message.length > 0)");
-         console.log(return_message.join(', '));
+         console.log(return_message);
         
          res.render('contact', {
             "title": "The News Paper - News &amp; Lifestyle Magazine Template",
             'categories': categories,
-            'return_message': return_message.join(', '),
+            'return_message': return_message,
             'values': req.body // læg mærke til vi "bare" sender req.body tilbage
          });
 

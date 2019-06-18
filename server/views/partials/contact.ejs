@@ -6,9 +6,24 @@
                 </div>
             </div>
         </div>
+        <div>Version 1</div>
         <% if( typeof return_message != 'undefined'){ %>
-            <h4><%= return_message %></h4>
+            <h4><ul><% return_message.forEach (current_return_message => { %>
+                <li><%= current_return_message %></li>
+            <% }) %></h4></ul>
          <% } %>
+
+        <hr>
+
+        <div>Version 2</div>
+        <% if( typeof return_message != 'undefined'){ %>
+            <h4>
+                <%= return_message.join(", ") %>
+            </h4>
+         <% } %>
+
+
+
         <div class="row">
             <div class="col-12 col-lg-8">
                 
