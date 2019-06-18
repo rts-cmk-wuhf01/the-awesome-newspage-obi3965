@@ -207,45 +207,55 @@ module.exports = (app) => {
          return_message.push('Please Enter Your Message')
       }
       if (return_message.length > 0) {
+         // Der har været en fejl i formular-input
+
          let categories = await getCategories(); // denne forklares lige om lidt!
+         console.log("Render in: if (return_message.length > 0)");
+         console.log(return_message.join(', '));
+        
          res.render('contact', {
+            "title": "The News Paper - News &amp; Lifestyle Magazine Template",
             'categories': categories,
             'return_message': return_message.join(', '),
             'values': req.body // læg mærke til vi "bare" sender req.body tilbage
          });
 
       } else {
+         // Formular input er ok
+
          let db = await mysql.connect();
 
-         try{
-         let result = await db.execute(`
-         INSERT INTO messages 
-         (message_name, message_email, message_subject, message_text, message_date) 
-         VALUES 
-         (?,?,?,?,?)`, [name, email, subject, message, contactDate]);
-         db.end();
-         // send det modtagede data tilbage, så vi kan se det er korrekt
-         // res.send(req.body);
-         // affected rows er større end nul, hvis en (eller flere) række(r) blev indsat
-         if (result[0].affectedRows > 0) {
-            return_message.push('Tak for din besked, vi vender tilbage hurtigst muligt');
-         } else {
-            return_message.push('Din besked blev ikke modtaget.... ');
-         }
-      }catch(errors){
-            
+         try {
+            let result = await db.execute(`
+            INSERT INTO messages 
+            (message_name, message_email, message_subject, message_text, message_date) 
+            VALUES 
+            (?,?,?,?,?)`, [name, email, subject, message, contactDate]);
+            db.end();
+            // send det modtagede data tilbage, så vi kan se det er korrekt
+            // res.send(req.body);
+            // affected rows er større end nul, hvis en (eller flere) række(r) blev indsat
+            if (result[0].affectedRows > 0) {
+               return_message.push('Tak for din besked, vi vender tilbage hurtigst muligt');
+            } else {
+               return_message.push('Din besked blev ikke modtaget.... ');
+            }
+         } catch (errors) {
+
          };
 
          let categories = await getCategories(); // denne har jeg ikke forklaret endnu! 
+         
+         console.log("Render after: try catch");
+         
          res.render('contact', {
-            
+            "title": "The News Paper - News &amp; Lifestyle Magazine Template",
             'categories': categories,
             'return_message': return_message.join(', '),
             //  'values': []
          });
       }
 
-      res.render('req.body')
    })
 
    app.get('/', (req, res, next) => {

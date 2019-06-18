@@ -11,9 +11,15 @@
          <% } %>
         <div class="row">
             <div class="col-12 col-lg-8">
-                    
+                
+
+                    <% if (typeof values == "undefined" || values.name == undefined) {
+                        values = { name: "Dummy Name", email: "dummy@mail.com", subject: "Dummy Subject", message: "Dummy Message"};
+                    }
+                    %>
                 <div class="contact-form-area">
-                    <form action="/contact"  method="post">
+                    <form method="post">
+
                         <div class="row">
                             <div class="col-12 col-lg-6">
                                 <input type="text" class="form-control" id="name" placeholder="Name" name="name"
