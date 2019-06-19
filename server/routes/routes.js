@@ -197,6 +197,7 @@ module.exports = (app) => {
       let return_message = [];
       //for validation, it will push our all values into our empty array
       if (name == 'undefined' || name == '') {
+         
          return_message.push("Please Enter Your Name");
       }
       if (email == 'undefined' || email == '') {
