@@ -184,7 +184,7 @@ module.exports = (app) => {
    })
 
    app.post('/contact', async (req, res, next) => {
-
+     
       let name = req.body.name;
       let email = req.body.email;
       let subject = req.body.subject;
@@ -244,6 +244,7 @@ module.exports = (app) => {
          } catch (errors) {
 
          };
+         
 
          let categories = await getCategories(); // denne har jeg ikke forklaret endnu! 
          
@@ -253,11 +254,11 @@ module.exports = (app) => {
             "title": "The News Paper - News &amp; Lifestyle Magazine Template",
             'categories': categories,
             'return_message': return_message.join(', '),
-             'values': []
+            //  'values': []
          });
       }
-
    })
+   
 
    app.get('/', (req, res, next) => {
       let now = new Date('2019-01-14 07:00:14');

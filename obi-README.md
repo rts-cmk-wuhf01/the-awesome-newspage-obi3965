@@ -1,18 +1,32 @@
 #EXPRESS.JS INSTALLATION
+
+
 to enter npm init in our VSCODE Terminal, means that we should enter some information about our application such as Name Version of our application
 `npm init`
+
+
 
 But npm init -y will built our package.json application by default.
 `npm init -y`
 
+
+
 to install our express in package.json dependencies we should enter following
 `npm install express --save`
 
-to install morgan in our package.json dependencies,we should enter following
+
+
+to install morgan in our package.json dependencies,why are we using morgan here,
+we should enter following.
+if we notice in our terminal it shows that in how many milliseconds the pages have been loaded. 
 `npm install morgan --save`
+
+
 
 to install express template engine in our package.json dependencies, we should enter following.because here are using we the template engine called (EJS); 
 `npm install ejs --save`
+
+
 
 to install express body-parser in our package.json dependencies, we should enter 
 following.
