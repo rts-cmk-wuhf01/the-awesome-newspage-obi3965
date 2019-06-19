@@ -26,6 +26,10 @@ we should also install mysql2 because we will work with mysql2 Database
 to install mysql2 in our dependencies enter below code
  `npm install mysql2 --save`
 
+now our all installation is saved in our package.json dependencies.
+**what dose dependencies means**
+it means that what our app depends on
+
 at the end our package.json should look like this
 `{
   "name": "the-awesome-newspage",
