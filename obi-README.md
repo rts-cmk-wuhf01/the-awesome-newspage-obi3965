@@ -1,6 +1,7 @@
 #EXPRESS.JS INSTALLATION
 
 
+
 to enter npm init in our VSCODE Terminal, means that we should enter some information about our application such as Name Version of our application
 `npm init`
 
@@ -86,3 +87,17 @@ our route should have more then one callback function as an argument and it is b
 
 i think we can only use post methods, when we work on forms
 `app.post('contact',(req,res,next){res.send('<form>it will send post request to our contact page</form>')})`
+
+
+
+`<% it is a server tag %>`;
+
+
+`<%= udskriver inholdet af variable %>`;
+
+
+
+`<% if(typeof articles != 'undefined') %>`(it will check if the variable is exist);
+
+
+when we print the data f.ex from our article database

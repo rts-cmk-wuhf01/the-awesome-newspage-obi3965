@@ -18,7 +18,8 @@ module.exports = (app) => {
       // res.send(products)
       // inde i routen
       res.render('newspage', {
-         'newspage': newspage
+         'newspage': newspage,
+         
       });
    })
 
@@ -40,14 +41,15 @@ module.exports = (app) => {
 
       res.render('home.ejs', {
          "title": "The News Paper - News &amp; Lifestyle Magazine Template",
-         "categories": categories
+         "categories": categories,
+         'page': 'home'
       })
 
 
 
    })
 
-   // Hvad skal der ske på denne side?
+   // Hvad skal der ske på dåenne side?
    // (...)
 
    app.get('/about', async function (req, res, next) {
@@ -56,7 +58,8 @@ module.exports = (app) => {
       db.end();
       res.render('about.ejs', {
          "title": "The News Paper - News &amp; Lifestyle Magazine Template",
-         "categories": categories
+         "categories": categories,
+         "page":'aboutNav'
       })
    })
 
@@ -96,7 +99,8 @@ module.exports = (app) => {
       res.render('categories.ejs', {
          "title": "The News Paper - News &amp; Lifestyle Magazine Template",
          "categories": categories,
-         "latestCommentsList": commentsList
+         "latestCommentsList": commentsList,
+         'page':'categoriesNav'
       })
 
 
@@ -124,32 +128,32 @@ module.exports = (app) => {
 
 
       db.end();
-      let commentsList = [{
-         name: "JAMES SMITH",
-         text: "Facebook is offering facial recognition..",
-         image: "img/bg-img/29.jpg",
-         date: "06:34 am, April 14, 2018"
-      },
-      {
-         name: "ANNA HANSEN",
-         text: "Facebook is offering facial recognition..",
-         image: "img/bg-img/30.jpg",
-         date: "06:34 am, April 15, 2018"
-      },
+      // let commentsList = [{
+      //    name: "JAMES SMITH",
+      //    text: "Facebook is offering facial recognition..",
+      //    image: "img/bg-img/29.jpg",
+      //    date: "06:34 am, April 14, 2018"
+      // },
+      // {
+      //    name: "ANNA HANSEN",
+      //    text: "Facebook is offering facial recognition..",
+      //    image: "img/bg-img/30.jpg",
+      //    date: "06:34 am, April 15, 2018"
+      // },
 
-      {
-         name: "CHRISTINA PRIOR",
-         text: "Facebook is offering facial recognition..",
-         image: "img/bg-img/31.jpg",
-         date: "06:34 am, April 15, 2018"
-      }
-      ]
+      // {
+      //    name: "CHRISTINA PRIOR",
+      //    text: "Facebook is offering facial recognition..",
+      //    image: "img/bg-img/31.jpg",
+      //    date: "06:34 am, April 15, 2018"
+      // }
+      // ]
       res.render('categories.ejs', {
          "title": "The News Paper - News &amp; Lifestyle Magazine Template",
          "categories": categories,  // Nav
          "articlesByCategory": articlesByCategory,
-
-         "latestCommentsList": commentsList
+         "page": "breakingNewsNavActive"
+         // "latestCommentsList": commentsList
       })
 
 
@@ -165,7 +169,8 @@ module.exports = (app) => {
 
       res.render('single-post.ejs', {
          "title": "The News Paper - News &amp; Lifestyle Magazine Template",
-         "categories": categories
+         "categories": categories,
+         "page":"singlePost"
       })
    })
 
@@ -179,6 +184,7 @@ module.exports = (app) => {
       res.render('contact.ejs', {
          "title": "The News Paper - News &amp; Lifestyle Magazine Template",
          "categories": categories,
+         "page": 'contactNav'
 
       })
    })
@@ -260,6 +266,22 @@ module.exports = (app) => {
    })
    
 
+
+   //just for training
+   app.get('/fisk/:number/:type',(req,res,next)=>{
+
+      let fiskData = {
+         number: req.params.number,
+         type : req.params.type
+      }
+      //it will prepare out in JSON format
+      console.log(fiskData);
+      res.end(JSON.stringify(fiskData));
+      // res.render('fisk.ejs',{
+      //    // fiskData:fiskData
+      // })
+        
+   })
    app.get('/', (req, res, next) => {
       let now = new Date('2019-01-14 07:00:14');
       console.log(app.locals.dateAndTime.format(now, 'h:mm A | MMMM DD'));
