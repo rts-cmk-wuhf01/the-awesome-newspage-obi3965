@@ -275,11 +275,11 @@ module.exports = (app) => {
          type : req.params.type
       }
       //it will prepare out in JSON format
-      console.log(fiskData);
-      res.end(JSON.stringify(fiskData));
-      // res.render('fisk.ejs',{
-      //    // fiskData:fiskData
-      // })
+      // console.log(fiskData);
+      // res.end(JSON.stringify(fiskData));
+      res.render('fisk.ejs',{
+         fiskData:fiskData
+      });
         
    })
    app.get('/', (req, res, next) => {
