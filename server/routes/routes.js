@@ -11,17 +11,17 @@ async function getCategories() {
 module.exports = (app) => {
 
    //    // Test
-   app.get('/database', async (req, res, next) => {
-      let db = await mysql.connect();
-      let [newspage] = await db.execute('SELECT * FROM articles');
-      db.end();
-      // res.send(products)
-      // inde i routen
-      res.render('newspage', {
-         'newspage': newspage,
+   // app.get('/database', async (req, res, next) => {
+   //    let db = await mysql.connect();
+   //    let [newspage] = await db.execute('SELECT * FROM articles');
+   //    db.end();
+   //    // res.send(products)
+   //    // inde i routen
+   //    res.render('newspage', {
+   //       'newspage': newspage,
          
-      });
-   })
+   //    });
+   // })
 
    // Hvad skal der ske på denne side?
    // (...)
