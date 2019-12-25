@@ -28,13 +28,6 @@ module.exports = (app) => {
 
    app.get('/', async function (req, res, next) {
 
-      // featurePostArea = [{
-      //    image: "img/bg-img/19.jpg",
-      //    postTitle: "FINANCE",
-      //    description: "Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-      //    time: "7:00 AM",
-      //    date:"April 14"
-      // }]
       let db = await mysql.connect();
       let [categories] = await db.execute('SELECT * FROM categories');
       db.end();
@@ -128,32 +121,13 @@ module.exports = (app) => {
 
 
       db.end();
-      // let commentsList = [{
-      //    name: "JAMES SMITH",
-      //    text: "Facebook is offering facial recognition..",
-      //    image: "img/bg-img/29.jpg",
-      //    date: "06:34 am, April 14, 2018"
-      // },
-      // {
-      //    name: "ANNA HANSEN",
-      //    text: "Facebook is offering facial recognition..",
-      //    image: "img/bg-img/30.jpg",
-      //    date: "06:34 am, April 15, 2018"
-      // },
-
-      // {
-      //    name: "CHRISTINA PRIOR",
-      //    text: "Facebook is offering facial recognition..",
-      //    image: "img/bg-img/31.jpg",
-      //    date: "06:34 am, April 15, 2018"
-      // }
-      // ]
+   
       res.render('categories.ejs', {
          "title": "The News Paper - News &amp; Lifestyle Magazine Template",
          "categories": categories,  // Nav
          "articlesByCategory": articlesByCategory,
          "page": "breakingNewsNavActive"
-         // "latestCommentsList": commentsList
+         
       })
 
 
